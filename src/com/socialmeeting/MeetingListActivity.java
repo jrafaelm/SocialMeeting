@@ -1,6 +1,8 @@
 package com.socialmeeting;
 
 
+import com.socialmeeting.domain.Meeting;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -19,19 +21,18 @@ public class MeetingListActivity extends Activity {
 		setContentView(R.layout.meetings);
 
 		lvMeetings = (ListView) findViewById(R.id.lvMeetings);
-		/*
+		
 		lvMeetings.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1,  int position, long id) {
 				if(lvMeetings.getItemAtPosition(position)!=null){
 					Meeting clickedMeeting =(Meeting) lvMeetings.getItemAtPosition(position);
-					clickedMeeting.setThumb(null);
 					Intent i = new Intent(ctx, MeetingActivity.class);
-					i.putExtra("serie", clickedMeeting);
+					i.putExtra("meeting", clickedMeeting);
 					startActivity(i);
 				}
 			}});
-		 */
+		 
 		listMeetings();
 	}
 	
