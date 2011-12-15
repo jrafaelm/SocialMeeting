@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<resources>
+    <string name="hello">Hello World, SocialMeetingActivity!</string>
+    <string name="meetings">Meetings</string>
+    <string name="app_name">Social Meeting</string>
+    <string name="login">Login</string>
+    <string name="password">Senha</string>
+    <string name="logar">Logar</string>
+</resources>
