@@ -1,11 +1,15 @@
 package com.socialmeeting.domain;
 
-public class Usuario {
+import java.io.Serializable;
+
+public class Usuario implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
 	private String nome;
 	private String email;
 	private String login;
 	private String senha;
+	private Edition edition;
 	
 	public String getNome() {
 		return nome;
@@ -37,6 +41,14 @@ public class Usuario {
 	
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+
+	public Edition getEdition() {
+		return edition;
+	}
+
+	public void setEdition(Edition edition) {
+		this.edition = edition;
 	}
 
 }
