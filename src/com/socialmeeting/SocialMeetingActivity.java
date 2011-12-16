@@ -9,9 +9,9 @@ import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.EditText;
 
-import com.socialmeeting.domain.Edition;
-import com.socialmeeting.domain.ProductFactory;
 import com.socialmeeting.domain.Usuario;
+import com.socialmeeting.domain.product.Editions;
+import com.socialmeeting.domain.product.ProductFactory;
 import com.socialmeeting.properties.AppProperties;
 
 public class SocialMeetingActivity extends Activity {
@@ -51,17 +51,16 @@ public class SocialMeetingActivity extends Activity {
 		
 		
     	if (usuario.getSenha().equals("demonstration")) {
-    		editor.putString(AppProperties.EDITION, Edition.DEMONSTRATION.name());
+    		editor.putString(AppProperties.EDITION, Editions.DEMONSTRATION.name());
         		
 		}
     	else if (usuario.getSenha().equals("enterprise")) {
-    		editor.putString(AppProperties.EDITION, Edition.ENTERPRISE.name());
+    		editor.putString(AppProperties.EDITION, Editions.ENTERPRISE.name());
         }
     	else if (usuario.getSenha().equals("personal")) {
-    		editor.putString(AppProperties.EDITION, Edition.PERSONAL.name());
+    		editor.putString(AppProperties.EDITION, Editions.PERSONAL.name());
         }
 		editor.commit();
-		
 		Intent i = new Intent(this, MeetingListActivity.class);
 		i.putExtra("usuario", usuario);
 		startActivity(i);
