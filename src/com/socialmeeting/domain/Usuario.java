@@ -9,7 +9,6 @@ public class Usuario implements Serializable {
 	private String email;
 	private String login;
 	private String senha;
-	private Edition edition;
 	
 	public String getNome() {
 		return nome;
@@ -43,12 +42,6 @@ public class Usuario implements Serializable {
 		this.senha = senha;
 	}
 
-	public Edition getEdition() {
-		return edition;
-	}
-
-	public void setEdition(Edition edition) {
-		this.edition = edition;
-	}
+	
 
 }

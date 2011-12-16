@@ -1,6 +1,6 @@
 package com.socialmeeting.domain;
 
-public class DemonstrationEdition extends ProductFeatures {
+public class DemonstrationEdition extends ProductFeatures implements ProductEdition {
 	
 	public DemonstrationEdition() {
 		setMeetingLimitation(true);

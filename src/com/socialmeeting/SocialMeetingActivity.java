@@ -1,20 +1,26 @@
 package com.socialmeeting;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.view.View;
 import android.widget.EditText;
 
 import com.socialmeeting.domain.Edition;
-import com.socialmeeting.domain.ProductEdition;
 import com.socialmeeting.domain.ProductFactory;
 import com.socialmeeting.domain.Usuario;
+import com.socialmeeting.properties.AppProperties;
 
 public class SocialMeetingActivity extends Activity {
 	
 	private ProductFactory productFactory;
 	private EditText edtLogin;
 	private EditText edtSenha;
-	
+	private SharedPreferences preferences;
+	private Editor editor;
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -24,35 +30,42 @@ public class SocialMeetingActivity extends Activity {
         productFactory = new ProductFactory();
         edtLogin = (EditText) findViewById(R.id.editText1);
         edtSenha = (EditText) findViewById(R.id.editText2);
+        
+        preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        
     }
     
-    public void btnLogarClick() {
-    	// trocar essa gambi por coisa mais bonita depois.
-    	Usuario usuario = new Usuario();
-    	gambiarraJediPraLogarNaTora(usuario); 
+    public void btnLogarClick(View v) {
     	
-    	/*
-    	* fabricar um produto e fazer alguma coisa com ele 
-    	* que nao sei o que eh. Talvez seja mais adequado
-    	* usar um command.
-    	*/
-    	ProductEdition productEdition = productFactory.create(usuario.getEdition());
+    	login(); 
+    	
     }
     
-    private Usuario gambiarraJediPraLogarNaTora(Usuario usuario) {
+    private void login() {
+    	Usuario usuario = new Usuario();
     	usuario.setLogin(edtLogin.getText().toString());
     	usuario.setSenha(edtSenha.getText().toString());
     	
-    	if (usuario.getLogin().equals("demonstration")) {
-			usuario.setEdition(Edition.DEMONSTRATION);
+    	editor = preferences.edit();
+        
+		
+		
+    	if (usuario.getSenha().equals("demonstration")) {
+    		editor.putString(AppProperties.EDITION, Edition.DEMONSTRATION.name());
+        		
 		}
-    	else if (usuario.getLogin().equals("enterprise")) {
-			usuario.setEdition(Edition.ENTERPRISE);
-		}
-    	else if (usuario.getLogin().equals("personal")) {
-			usuario.setEdition(Edition.PERSONAL);
-		}
-    	return usuario;
+    	else if (usuario.getSenha().equals("enterprise")) {
+    		editor.putString(AppProperties.EDITION, Edition.ENTERPRISE.name());
+        }
+    	else if (usuario.getSenha().equals("personal")) {
+    		editor.putString(AppProperties.EDITION, Edition.PERSONAL.name());
+        }
+		editor.commit();
+		
+		Intent i = new Intent(this, MeetingListActivity.class);
+		i.putExtra("usuario", usuario);
+		startActivity(i);
+		
     }
     
 }

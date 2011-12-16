@@ -22,7 +22,7 @@ public class ProductFeatures implements ProductEdition {
 		}
 	}
 	
-	public boolean isMeetingLimitation() {
+	public boolean hasMeetingLimitation() {
 		return meetingLimitation;
 	}
 	
@@ -30,7 +30,7 @@ public class ProductFeatures implements ProductEdition {
 		this.meetingLimitation = meetingLimitation;
 	}
 	
-	public boolean isRecording() {
+	public boolean hasRecording() {
 		return recording;
 	}
 	
