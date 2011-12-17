@@ -2,7 +2,7 @@ package com.socialmeeting.domain.product;
 
 public class ProductFactory {
 	
-	public IProductEdition create(Editions edition) {
+	public static IProductEdition create(Editions edition) {
 		
 		IProductEdition productEdition = null;
 		
